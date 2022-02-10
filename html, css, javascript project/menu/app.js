@@ -126,7 +126,6 @@ function displayMenuButtons(){
 
    
 
-    // const filterBtns = btnContainer.querySelectorAll(".filter-btn")
     console.log(filterBtns)
     console.log(btnContainer)
 

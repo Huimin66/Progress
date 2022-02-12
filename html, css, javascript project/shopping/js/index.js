@@ -32,7 +32,7 @@ window.addEventListener("load", function(){
         }
     }
     
-    // render the same amount of li according to the picture
+    // create the same amount of li according to the ol
     for(let i = 0; i<ul.children.length; i++){
         let li = document.createElement('li')       
         ol.appendChild(li)
@@ -42,13 +42,11 @@ window.addEventListener("load", function(){
     for(let i = 0; i<ul.children.length; i++){
         ol.children[i].addEventListener('click', function(){
             clearCurrentStyle()
-            this.className = 'current'
+            ol.children[i].className='current'
             if(currentSlider == ul.children.length-1){
                 currentSlider = 0;
                 ul.style.left = 0
-            }
-            console.log(ul.style.left)
-            
+            }            
             
             // sliders move
             animate(ul, -i * focusWidth)
@@ -72,16 +70,10 @@ window.addEventListener("load", function(){
             ul.style.left = 0
         }
         currentSlider++
-        console.log("1 currentSlider " +currentSlider)
         animate(ul, -currentSlider*focusWidth)
 
         currentcircle = currentSlider%3
         clearCurrentStyle()
         ol.children[currentcircle].className='current'
-
-        // if(currentSlider == ul.children.length-1){
-        //     currentSlider = 0;
-        //     ul.style.left = 0
-        // }
     })
 })

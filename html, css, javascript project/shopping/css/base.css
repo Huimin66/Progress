@@ -1,0 +1,70 @@
+/* clear margin, padding */
+* {
+    margin: 0;
+    padding: 0;
+    /* css3 box model */
+    box-sizing: border-box;
+}
+/* we don't want italic characters */
+em{
+    font-style: normal
+}
+/* get rid of the default dot before every li */
+li {
+    list-style: none
+}
+
+img {
+    /* border 0 to compat with old browers,which give images borders */
+    border: 0;
+    /* 取消图片底侧有空白缝隙的问题 */
+    vertical-align: middle
+}
+
+button {
+    /* when moves over button, the cursor turns to a hand */
+    cursor: pointer
+}
+
+a {
+    color: #666;
+    text-decoration: none
+}
+
+a:hover {
+    color: #c81623
+}
+
+button,
+input {
+    /* "\5B8B\4F53" is song typeface */
+    font-family: Microsoft YaHei, Heiti SC, tahoma, arial, Hiragino Sans GB, "\5B8B\4F53", sans-serif;
+    /* we don't like the default style */
+    border: 0; 
+    outline: none;
+}
+
+body {
+    /* CSS3 抗锯齿形 让文字显示的更加清晰 */
+    -webkit-font-smoothing: antialiased;
+    background-color: #fff;
+    font: 12px/1.5 Microsoft YaHei, Heiti SC, tahoma, arial, Hiragino Sans GB, "\5B8B\4F53", sans-serif;
+    color: #666
+}
+
+.hide,
+.none {
+    display: none
+}
+/* clear floats */
+.clearfix:after {
+    visibility: hidden;
+    clear: both;
+    display: block;
+    content: ".";
+    height: 0
+}
+
+.clearfix {
+    *zoom: 1
+}

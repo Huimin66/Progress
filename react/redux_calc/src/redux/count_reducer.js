@@ -1,5 +1,6 @@
 import {INCREMENT, DECREMENT} from './constants'
 
+// The store's reducing function will be called with the current getState() result and the given action synchronously. 
 const initState = 0
 export default function countReducer(preState=initState, action){
     console.log(preState)

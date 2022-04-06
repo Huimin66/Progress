@@ -86,17 +86,31 @@
     background-color:#b1191a;
 }
 
+/* .popular ul{
+    display:  flex;
+    flex-direction: column;
+    border: 1px solid #b1191a;
+    height: 405px;
+    margin-top: 2px;
+}
+.popular ul li{
+    height:25%;
+    color:#b1191a;
+    font-size: 20px
+} */
+
+
 .popular li{
     float:left;
+    padding-top: 20px;
     width: 125px;
     height: 135px;
-    /* border: 1px solid #e4e4e4; */
 }
 
 .popularitems img{
     display: inline-block;
-    width: 100%;
-    height: 80%;
+    width: 80%;
+    height: 60%;
     vertical-align: bottom;
 }
 
@@ -154,4 +168,8 @@
     text-align: left;
     height: 10%;
     /* border: #b1191a solid; */
+}
+
+.countDown{
+    
 }

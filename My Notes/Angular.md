@@ -4,7 +4,7 @@
 execute   
 `ng serve --open`
 
-ts class:  
+ts class: 
 ```TypeScript
 export class NewsComponent implements OnInit {
     public title = "i am news component"
@@ -19,7 +19,8 @@ export class NewsComponent implements OnInit {
 
   ngOnInit(): void {
   }
-}```  
+}
+```  
 
 use variables in html  
 `<div [title]="title"></div>`  

@@ -23,5 +23,7 @@ export class NewsComponent implements OnInit {
 ```  
 
 use variables in html  
-`<div [title]="title"></div>`  
-`<div>{{username}}</div>`
+```HTML
+ <div [title]="title"></div>
+ <div>{{username}}</div>
+```

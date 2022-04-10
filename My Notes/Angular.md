@@ -1,13 +1,10 @@
- create a new component
- 
+ create a new component  
 `ng g component components/news`
 
-execute 
-
+execute   
 `ng serve --open`
 
-ts class:
-
+ts class:  
 `export class NewsComponent implements OnInit {`
     `public title = "i am news component"`
     `private username:string = 'abc'`
@@ -24,7 +21,6 @@ ts class:
 
 `}`
 
-use variables in html
-
+use variables in html  
 `<div [title]="title"></div>`
 `<div>{{username}}</div>`

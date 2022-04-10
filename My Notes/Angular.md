@@ -11,14 +11,11 @@ ts class:
     `public student:object={`
         `username:'zhang'`
     `}`
-
   `constructor() {` 
       `this.username='wang'`
   `}`
-
   `ngOnInit(): void {`
   `}`
-
 `}`
 
 use variables in html  

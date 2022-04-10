@@ -6,17 +6,17 @@ execute
 
 ts class:  
 `export class NewsComponent implements OnInit {`
-    `public title = "i am news component"`
-    `private username:string = 'abc'`
-    `public student:object={`
-        `username:'zhang'`
-    `}`
-  `constructor() {` 
-      `this.username='wang'`
-  `}`
-  `ngOnInit(): void {`
-  `}`
-`}`
+    `public title = "i am news component"`  
+    `private username:string = 'abc'`  
+    `public student:object={`  
+        `username:'zhang'`  
+    `}`  
+  `constructor() {`   
+      `this.username='wang'`  
+  `}`  
+  `ngOnInit(): void {`  
+  `}`  
+`}`  
 
 use variables in html  
 `<div [title]="title"></div>`

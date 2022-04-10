@@ -19,7 +19,7 @@ export class NewsComponent implements OnInit {
 
   ngOnInit(): void {
   }
-} ```  
+}```  
 
 use variables in html  
 `<div [title]="title"></div>`  

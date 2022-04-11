@@ -5,7 +5,7 @@
 **execute**   
 `ng serve --open`
 
-**use variables**  
+**use variables**
 ```TypeScript
 export class NewsComponent implements OnInit {
     public title = "i am news component"

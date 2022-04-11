@@ -1,3 +1,4 @@
+ ***Chapter 1***  
  create a new component  
 `ng g component components/news`
 
@@ -87,3 +88,6 @@ use variables in html
     </li>
 </ul>
 ```
+
+ ***Chapter 2***  
+ 

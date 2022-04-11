@@ -5,7 +5,7 @@
 **execute**   
 `ng serve --open`
 
-**use variables**
+**use variables**  
 ```TypeScript
 export class NewsComponent implements OnInit {
     public title = "i am news component"
@@ -96,7 +96,7 @@ export class NewsComponent implements OnInit {
  
 **use image**  
  ```TypeScript
-public picUrl="https://www.theodinproject.com/assets/home-isometric-eebc110218cbdb1460dd2dfc662a4e96ae94747667dc81da422804ef55cfd2d8.svg"
+public picUrl="https://upload.wikimedia.org/wikipedia/commons/2/24/Circle-icons-image.svg"
  ```  
 ```HTML
 <!-- image positon: src-> assets-> images -->
@@ -104,7 +104,7 @@ public picUrl="https://www.theodinproject.com/assets/home-isometric-eebc110218cb
 <img [src]="picUrl"/>
  ```  
  
- get index form for loop  
+**get index from for loop**  
  ```TypeScript
  public newsList:any[]=[
         {
@@ -118,24 +118,24 @@ public picUrl="https://www.theodinproject.com/assets/home-isometric-eebc110218cb
         }
     ]
  ```
-  ```HTML  
+ ```HTML  
   <ul>
     <li *ngFor="let item of newsList; let key=index;">
         {{key}}---{{item.title}}
     </li>
-</ul>
+  </ul>
  ```
   
-  use boolean  
-  ```TypeScript
-    public flag: boolean = true
-  ```
-   ```HTML
+**use boolean**  
+```TypeScript
+  public flag: boolean = true
+```
+```HTML
 <div *ngIf="flag">
     <img src="assets/image/01.png" alt="">
 </div>
 <div *ngIf="!flag">
     <img src="assets/image/02.png" alt="">
 </div>
-  ```
+ ```
  

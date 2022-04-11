@@ -1,11 +1,11 @@
  ***Chapter 1***  
- create a new component  
+ **create a new component**  
 `ng g component components/news`
 
-execute   
+**execute**   
 `ng serve --open`
 
-ts class: 
+**use variables**  
 ```TypeScript
 export class NewsComponent implements OnInit {
     public title = "i am news component"
@@ -14,6 +14,15 @@ export class NewsComponent implements OnInit {
         username:'zhang'
     }
     public content="<h2>I am a html label</h2>"
+```  
+```HTML
+ <div [title]="title"></div>
+ <div>{{username}}</div>
+ <div [innerHTML]="content"></div>
+<div [innerHTML]="content"></div>
+```  
+**for loop**  
+ ```TypeScript
     arr=['111','222','333']
     arr2:Array<any>=['abc', 123]
     list:any[]=['def', 456]
@@ -55,13 +64,7 @@ export class NewsComponent implements OnInit {
   }
 }
 ```  
-
-use variables in html  
-```HTML
- <div [title]="title"></div>
- <div>{{username}}</div>
- <div [innerHTML]="content"></div>
-<div [innerHTML]="content"></div>
+ ```HTML
 <ul>
     <li *ngFor="let item of arr">{{item}}</li>
 </ul>
@@ -87,12 +90,14 @@ use variables in html
         </ol>
     </li>
 </ul>
-public picUrl="https://www.theodinproject.com/assets/home-isometric-eebc110218cbdb1460dd2dfc662a4e96ae94747667dc81da422804ef55cfd2d8.svg"
-```
+```  
 
- ***Chapter 2***  
+***Chapter 2***  
  
-import image into html  
+**use image**  
+ ```TypeScript
+public picUrl="https://www.theodinproject.com/assets/home-isometric-eebc110218cbdb1460dd2dfc662a4e96ae94747667dc81da422804ef55cfd2d8.svg"
+ ```  
 ```HTML
 <!-- image positon: src-> assets-> images -->
 <img src="assets/images/01.png" alt="favorite">

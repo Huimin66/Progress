@@ -87,7 +87,50 @@ use variables in html
         </ol>
     </li>
 </ul>
+public picUrl="https://www.theodinproject.com/assets/home-isometric-eebc110218cbdb1460dd2dfc662a4e96ae94747667dc81da422804ef55cfd2d8.svg"
 ```
 
  ***Chapter 2***  
+ 
+import image into html
+ ```HTML
+<!-- image positon: src-> assets-> images -->
+<img src="assets/images/01.png" alt="favorite">
+<img [src]="picUrl"/>
+ ```
+ 
+ get index form for loop
+  ```TypeScript
+ public newsList:any[]=[
+        {
+            'title': 'I am new 1'
+        },
+        {
+            'title': 'I am new 2'
+        },
+        {
+            'title': 'I am new 3'
+        }
+    ]
+  ```
+   ```HTML
+  <ul>
+    <li *ngFor="let item of newsList; let key=index;">
+        {{key}}---{{item.title}}
+    </li>
+</ul>
+  ```
+  
+  use boolean 
+    ```TypeScript
+    public flag: boolean = true
+  ```
+   ```HTML
+<div *ngIf="flag">
+    <img src="assets/image/01.png" alt="">
+</div>
+<div *ngIf="!flag">
+    <img src="assets/image/02.png" alt="">
+</div>
+  ```
  

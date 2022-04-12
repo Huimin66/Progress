@@ -173,3 +173,48 @@ public score:number = 2
     ngClass show
 </div>
 ```
+
+ **ngStyle**  
+ ```TypeScript
+public attr:string='red'
+```
+```HTML
+<p [ngStyle]="{'color': 'red'}">
+    I am p label
+</p>
+```  
+
+ **pipe**   
+```TypeScript
+public today = new Date()
+```
+ ```HTML
+<p>{{title | uppercase}}</p>
+<p>{{title | lowercase}}</p>
+
+<p>{{today | date:'yyyy-MM-dd HH:mm:ss'}}</p>
+``` 
+
+ **event click**   
+ ```TypeScript
+getTitle(){
+    alert(this.title)
+}
+setTitle(){
+    this.title='Title changed'
+}
+```
+ ```HTML
+<strong>{{title}}</strong>
+<button (click)="getTitle()">get title</button>
+<button (click)="setTitle()">set title</button>
+```  
+ **event click**   
+ ```TypeScript
+keyDown(event:any){
+    console.log(event.target)
+}
+```
+```HTML
+<input type="text" (keydown)="keyDown($event)"/>
+```

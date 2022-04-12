@@ -126,9 +126,9 @@ public picUrl="https://upload.wikimedia.org/wikipedia/commons/2/24/Circle-icons-
   </ul>
  ```
   
-**use boolean**  
+**use if**  
 ```TypeScript
-  public flag: boolean = true
+public flag: boolean = true
 ```
 ```HTML
 <div *ngIf="flag">
@@ -137,5 +137,39 @@ public picUrl="https://upload.wikimedia.org/wikipedia/commons/2/24/Circle-icons-
 <div *ngIf="!flag">
     <img src="assets/image/02.png" alt="">
 </div>
- ```
+ ```  
  
+**use if else** 
+```css
+.red{
+    color: red;
+}
+```
+
+```HTML
+<ul>
+    <li *ngFor="let item of newsList; let key=index;">
+        <span *ngIf="key==1" class="red">{{key}}---{{item.title}}</span>
+        <span *ngIf="key!=1">{{key}}---{{item.title}}</span>
+    </li>
+</ul>
+```
+**use switch**  
+```TypeScript
+public score:number = 2
+```
+```HTML
+<ul [ngSwitch]="score">
+    <li *ngSwitchCase="1">paid</li>
+    <li *ngSwitchCase="2">order confirmed</li>
+    <li *ngSwitchCase="3">shipped</li>
+    <li *ngSwitchDefault>invalid</li>
+</ul>
+```
+ 
+ **ngClass ngStyle**  
+```HTML
+<div [ngClass]="{red: true}">
+    ngClass show
+</div>
+```

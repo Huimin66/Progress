@@ -209,7 +209,7 @@ setTitle(){
 <button (click)="getTitle()">get title</button>
 <button (click)="setTitle()">set title</button>
 ```  
- **event click**   
+ **event keydown **   
  ```TypeScript
 keyDown(event:any){
     console.log(event.target)
@@ -218,3 +218,25 @@ keyDown(event:any){
 ```HTML
 <input type="text" (keydown)="keyDown($event)"/>
 ```
+
+**ngModel**  
+Creates a FormControl instance from a domain model and binds it to a form control element.  
+```TypeScript
+//import FormModule in app.module.ts
+import{FormsModule} from '@angular/forms'
+//define a variable in xxx.component.ts
+public keywords:string = ''
+@NgModule({ 
+//....
+imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule
+],
+```
+```HTML
+//use ngModel in xxx.component.html
+<input type="text" [(ngModel)]="keywords" />
+```  
+
+

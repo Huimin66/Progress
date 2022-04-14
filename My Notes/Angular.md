@@ -239,4 +239,4 @@ imports: [
 <input type="text" [(ngModel)]="keywords" />
 ```  
 
-
+Defining a name attribute is a requirement when using [(ngModel)] in combination with a form.

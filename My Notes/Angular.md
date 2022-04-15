@@ -240,3 +240,30 @@ imports: [
 ```  
 
 Defining a name attribute is a requirement when using [(ngModel)] in combination with a form.
+
+**use service**  
+terminal 
+```TypeScript
+ng g service services/storage
+```
+app.mudule.ts 
+```TypeScript
+import {StorageService} from './services/storage.service'
+
+providers: [StorageService],
+```
+storage.service.ts
+```TypeScript
+  get(){
+    console.log("this is a service")
+  }
+```
+search.component.ts 
+```TypeScript
+import {StorageService} from '../../services/storage.service'
+ constructor(public storage:StorageService) { 
+    let search = this.storage.get()
+    console.log(search) //this is a service
+  }
+```
+

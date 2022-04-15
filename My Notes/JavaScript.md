@@ -142,6 +142,5 @@ f(1,2)
 let arr = [1,2,34,56,89]
 let max = Math.max.apply(Math.arr)
 ```
-
 JavaScript arguments
 https://zhuanlan.zhihu.com/p/23007032

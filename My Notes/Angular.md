@@ -241,7 +241,7 @@ imports: [
 
 Defining a name attribute is a requirement when using [(ngModel)] in combination with a form.
 
-**use service**  
+***use service***  
 terminal 
 ```TypeScript
 ng g service services/storage
@@ -266,4 +266,57 @@ import {StorageService} from '../../services/storage.service'
     console.log(search) //this is a service
   }
 ```
+**ngOnInit()**  
+die Initialisierung der Komponente oder Direktive abgeschlossen 
+
+**ngAfterViewInit()  @ViewChild**
+Called after ngAfterContentInit when the component's view has been initialized.
+Applies to components.
+Add 'inplements AfterViewInit' to the class.
+```TypeScript
+import { Component, OnInit, ViewChild } from '@angular/core';
+//...
+@ViewChild('myBox') myBox:ElementRef | undefined
+@ViewChild('header') myBox:ElementRef | undefined
+//...
+ngAfterViewInit(){
+    if(this.myBox){
+        this.myBox.nativeElement.style.color='red'
+    }
+}
+
+this.header.run()
+```
+```HTML
+<div #myBox>
+    i am myBox
+</div>
+
+<app-header #header></app-header>
+```
+
+**Informationnen über Property-Bindings vom Parent übergeben**  
+```HTML
+//home.component.html
+<app-header [title]="title" [msg]=""></app-header>
+
+//header.component.html
+<header>{{title}}</header>
+```
+```TypeScript
+//home.component.ts
+public title:string="Home Title"
+
+//header.component.ts
+import { Component, OnInit, ViewChild, ElementRef, Input} from '@angular/core';
+@Input() title:string
+```
+
+
+
+
+
+
+
+
 

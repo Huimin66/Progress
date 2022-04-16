@@ -357,9 +357,9 @@ ngAfterViewChecked
 ngOnDestroy
 
 *Ausführungsreihenfolge*  
-![Ausführungsreihenfolge](https://angular.de/artikel/angular-2-component-lifecycle/lifecycle-hooks-init.png =400x200)
+<img src="https://angular.de/artikel/angular-2-component-lifecycle/lifecycle-hooks-init.png" height="420px" width="400px" />
 Wenn die Change Detection an einer Komponente nach der Initialisierung angestoßen wird, 
 haben wir den Zugriff auf folgende Hooks innerhalb dieser Komponente.
-![Ausführungsreihenfolge](https://angular.de/artikel/angular-2-component-lifecycle/lifecycle-hooks-change.png =400x200)
+<img src="https://angular.de/artikel/angular-2-component-lifecycle/lifecycle-hooks-change.png" height="400px" width="380px" />
 
 

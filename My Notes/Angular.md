@@ -340,19 +340,26 @@ ngOnInit
 ```
 Wollt ihr jedoch einfach nach dem Initialisieren der Inputs einmalig eine Funktion ausführen, bietet sich der ngOnInit-Hook an.
 Hinweis: Im Konstruktor einer Komponente sollte nur zur Dependency Injection genutzt werden. Alles andere kann in den ngOnInit Hook verschoben werden.
-Wichtig: Der ngDoCheck Hook wird immer dann ausgeführt, wenn die Komponente ihre Eingabewerte auf Änderungen prüfen soll. Dies kann je nach aktiver Change Detection Strategie sehr häufig passieren.
+Wichtig: Der ngDoCheck Hook wird immer dann ausgeführt, wenn die Komponente ihre Eingabewerte auf Änderungen prüfen soll. 
+Dies kann je nach aktiver Change Detection Strategie sehr häufig passieren.
 ```
 ngDoCheck
 ```
-Wichtig: Der ngDoCheck Hook wird immer dann ausgeführt, wenn die Komponente ihre Eingabewerte auf Änderungen prüfen soll. Dies kann je nach aktiver Change Detection Strategie sehr häufig passieren.
-Die eigene Change Detection Funktion sollte daher sehr performant implementiert werden, um die weitere Ausführung der Anwendung nicht zu blockieren.
+Wichtig: Der ngDoCheck Hook wird immer dann ausgeführt, wenn die Komponente ihre Eingabewerte auf Änderungen prüfen soll. 
+Dies kann je nach aktiver Change Detection Strategie sehr häufig passieren.
+Die eigene Change Detection Funktion sollte daher sehr performant implementiert werden, 
+um die weitere Ausführung der Anwendung nicht zu blockieren.
 ```
 ngAfterContentInit
 ngAfterContentChecked
 ngAfterViewInit
 ngAfterViewChecked
 ngOnDestroy
-*Ausführungsreihenfolge*  
 
+*Ausführungsreihenfolge*  
 ![Ausführungsreihenfolge](https://angular.de/artikel/angular-2-component-lifecycle/lifecycle-hooks-init.png)
+Wenn die Change Detection an einer Komponente nach der Initialisierung angestoßen wird, 
+haben wir den Zugriff auf folgende Hooks innerhalb dieser Komponente.
+![Ausführungsreihenfolge](https://angular.de/artikel/angular-2-component-lifecycle/lifecycle-hooks-change.png)
+
 

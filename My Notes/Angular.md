@@ -312,11 +312,47 @@ import { Component, OnInit, ViewChild, ElementRef, Input} from '@angular/core';
 @Input() title:string
 ```
 
+**Output child send info to parent**  
+```HTML
+//child.component.html
+<button (click)="sendToParent()">Send Information to Parent</button>
 
+//parent.component.html
+<app-child (outer)="run($event)"></app-child>
+```
+```TypeScript
+//child.component.ts
+import { Output, EventEmitter} from '@angular/core';
+...
+@Output() private outer = new EventEmitter()
+...
+sendToParent(){
+    this.outer.emit("some data from child component")
+}
+```
 
+***Der Lebenszyklus einer Komponente***  
+ngOnChanges
+```
+Wichtig: Der erste ngOnChanges-Aufruf erfolgt bereits vor ngOnInit!
+```
+ngOnInit
+```
+Wollt ihr jedoch einfach nach dem Initialisieren der Inputs einmalig eine Funktion ausführen, bietet sich der ngOnInit-Hook an.
+Hinweis: Im Konstruktor einer Komponente sollte nur zur Dependency Injection genutzt werden. Alles andere kann in den ngOnInit Hook verschoben werden.
+Wichtig: Der ngDoCheck Hook wird immer dann ausgeführt, wenn die Komponente ihre Eingabewerte auf Änderungen prüfen soll. Dies kann je nach aktiver Change Detection Strategie sehr häufig passieren.
+```
+ngDoCheck
+```
+Wichtig: Der ngDoCheck Hook wird immer dann ausgeführt, wenn die Komponente ihre Eingabewerte auf Änderungen prüfen soll. Dies kann je nach aktiver Change Detection Strategie sehr häufig passieren.
+Die eigene Change Detection Funktion sollte daher sehr performant implementiert werden, um die weitere Ausführung der Anwendung nicht zu blockieren.
+```
+ngAfterContentInit
+ngAfterContentChecked
+ngAfterViewInit
+ngAfterViewChecked
+ngOnDestroy
+*Ausführungsreihenfolge*  
 
-
-
-
-
+![Ausführungsreihenfolge](https://angular.de/artikel/angular-2-component-lifecycle/lifecycle-hooks-init.png)
 

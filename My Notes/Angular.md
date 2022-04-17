@@ -209,7 +209,7 @@ setTitle(){
 <button (click)="getTitle()">get title</button>
 <button (click)="setTitle()">set title</button>
 ```  
- **event keydown **   
+ **event keydown**   
  ```TypeScript
 keyDown(event:any){
     console.log(event.target)
@@ -235,13 +235,13 @@ imports: [
 ],
 ```
 ```HTML
-//use ngModel in xxx.component.html
+<-- use ngModel in xxx.component.html !-->
 <input type="text" [(ngModel)]="keywords" />
 ```  
 
 Defining a name attribute is a requirement when using [(ngModel)] in combination with a form.
 
-***use service***  
+**use service**  
 terminal 
 ```TypeScript
 ng g service services/storage
@@ -297,10 +297,10 @@ this.header.run()
 
 **Informationnen über Property-Bindings vom Parent übergeben**  
 ```HTML
-//home.component.html
+<-- home.component.html !-->
 <app-header [title]="title" [msg]=""></app-header>
 
-//header.component.html
+<-- header.component.html !-->
 <header>{{title}}</header>
 ```
 ```TypeScript
@@ -314,10 +314,10 @@ import { Component, OnInit, ViewChild, ElementRef, Input} from '@angular/core';
 
 **Output child send info to parent**  
 ```HTML
-//child.component.html
+<-- child.component.html !-->
 <button (click)="sendToParent()">Send Information to Parent</button>
 
-//parent.component.html
+<-- parent.component.html !-->
 <app-child (outer)="run($event)"></app-child>
 ```
 ```TypeScript
@@ -363,5 +363,97 @@ ngOnDestroy
 Wenn die Change Detection an einer Komponente nach der Initialisierung angestoßen wird, 
 haben wir den Zugriff auf folgende Hooks innerhalb dieser Komponente.  
 <img src="https://angular.de/artikel/angular-2-component-lifecycle/lifecycle-hooks-change.png" height="350px" width="330px" />
+
+**send Http request, use HttpClientModule**  
+```TypeScript
+//app.module.ts
+import{HttpClientModule} from '@angular/common/http'
+imports:[
+    BrowserModule,
+    HttpClientModule
+]
+//home.component.ts
+import{HttpClient} from '@angular/common/http'
+import{HttpHeaders} from '@angular/common/http' //post
+...
+constructor(public http:HttpClient){
+    
+}
+...
+let api = "http://a.b.c"
+this.http.get(api).subscribe(responde=>{
+    console.log(responde)
+})
+...
+const httpOptions={
+    headers:new HttpHeaders({'Conten-Type': 'application/json'})
+}
+let api = "http://a.b.c"
+this.http.post(api, {username:"jone", age"20"}, httpOptions).subscribe(response=>{
+    console.log(response)
+});
+```
+**Route**  
+1,choose route module when create the project.  
+2, app-routing.module.ts 
+```TypeScript
+import {NewsComponent} from './components/news/new.component'
+import {HomeComponent} from './components/news/home.component'
+import {ProductComponent} from './components/news/product.component'
+...
+import {WelcomeComponent} from './components/home/welcome/welcome.component'
+import {WelcomeComponent} from './components/home/settting/setting.component'
+...
+const routes: Routes=[
+    {
+        path:'new', component:NewComponent
+    },
+    {
+        path:'home', component:HomeComponent
+        children:[
+            {
+                {path:'welcome', component:WelcomComponent},
+                {path:'setting', component:SettingComponent},
+                {path:'**', component:WelcomComponent}
+            }
+        ]
+        
+    },
+    {
+        path:'product', component:ProductComponent
+    },
+    {
+        path:'**', redirectTo:'home'
+    }
+]
+```
+```HTML
+<-- app.component.html!-->
+<header class="header">
+    <a [routerLink]="['/home']" routerLinkActive="active"></a>
+    <a [routerLink]="['/news']" routerLinkActive="active"></a>
+    <a [routerLink]="['/product']" routerLinkActive="active"></a>
+    <-- or -->   
+    <a routerLink="/home"></a>
+</header>
+<router-outlet></router-outlet>
+```  
+```HTML
+<-- home.component.html!-->
+<div class="left">
+    <a [routerLink]="['/home/welcome']" routerLinkActive="active"></a>
+    <a [routerLink]="['/home/setting']" routerLinkActive="active"></a>
+</div>
+<div class="right">
+    <router-outlet></router-outlet>
+</div>
+```
+
+ 
+
+
+
+
+
 
 

@@ -39,7 +39,7 @@ function Header(props) {
     React.useEffect(()=>{
         getWeather()
 
-        //set the current time, this will render the page every second,but is this function really necessory?
+        //set the current time, this will render the page every second, is this function really necessory?
         // let timer = setInterval(() => {
         //     setCurrentTime(new Date().toLocaleString()) 
         // }, 1000)

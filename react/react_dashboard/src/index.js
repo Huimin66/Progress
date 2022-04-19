@@ -5,15 +5,16 @@ import App from './App'
 import store from "./redux/store";
 import { Provider } from "react-redux";
 
-
+//react-redux
 ReactDOM.render(
   <Provider store={store}>
     <App />
   </Provider>,
   document.getElementById("root")
 );
+
+//redux
 // store.subscribe(()=>{
-//     console.log('组件更新')
 //     ReactDOM.render(
 //         <Provider store={store}>
 //           <App />

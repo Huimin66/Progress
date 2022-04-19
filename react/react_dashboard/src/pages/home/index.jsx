@@ -13,7 +13,7 @@ export default class Home extends Component {
       <div  className="home">
         <Card
           className="home-card"
-          title="商品总量"
+          title="Total Products"
           //   extra={
           //     <Icon style={{ color: "rgba(0,0,0,.45)" }} type="question-circle" />
           //   }
@@ -27,7 +27,7 @@ export default class Home extends Component {
           <Statistic
             value={15}
             valueStyle={{ fontSize: 15 }}
-            prefix={"周同比"}
+            prefix={"Year-on-year growth"}
             suffix={
               <div>
                 %
@@ -41,7 +41,7 @@ export default class Home extends Component {
           <Statistic
             value={10}
             valueStyle={{ fontSize: 15 }}
-            prefix={"日同比"}
+            prefix={"Day-on-Day growth"}
             suffix={
               <div>
                 {/* %
@@ -54,24 +54,24 @@ export default class Home extends Component {
           />
         </Card>
         <Card className='home-center'>
-            <span>欢迎使用河狸兽后台管理系统</span>
+            <span>Welcome to xxx management system</span>
         </Card>
         <Card
-          title="任务"
+          title="Tasks"
           className="home-table-right"
           //   extra={<Icon  />}
         >
           <Timeline>
-            <Timeline.Item color="green">新版本迭代会</Timeline.Item>
-            <Timeline.Item color="green">完成网站设计初版</Timeline.Item>
+            <Timeline.Item color="green">Meet the Clients</Timeline.Item>
+            <Timeline.Item color="green">Restock</Timeline.Item>
             <Timeline.Item color="red">
-              <p>联调接口</p>
-              <p>功能验收</p>
+              <p>Purchase</p>
+              <p>Inspect incomming material</p>
             </Timeline.Item>
             <Timeline.Item>
-              <p>登录功能设计</p>
-              <p>权限验证</p>
-              <p>页面排版</p>
+              <p>Financial audit </p>
+              <p>Track record</p>
+              <p>Purchase returns</p>
             </Timeline.Item>
           </Timeline>
         </Card>

@@ -19,7 +19,7 @@ import { connect } from "react-redux";
             const response = await reqLogin(username, password)
             if (response.status === 0){
                 message.success("login in success")
-                props.login(username, password);
+                props.login(username, password); //login function from redux
             }
             else{
                 message.error(response.data.message)
@@ -48,7 +48,7 @@ import { connect } from "react-redux";
     };
       
  
-        const user = props.user;
+        const user = props.user;// user from redux
         if (user && user._id) {
             return (
                 <Navigate to="/Admin" replace={true} />

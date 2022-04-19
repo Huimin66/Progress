@@ -1,0 +1,16 @@
+<div class="search">
+  <input class="searcharea" type="text" [(ngModel)]="keywords" (keyup)="doAdd($event)">
+  <hr>
+  <h3>Todo List</h3>
+  <ul>
+    <li *ngFor="let item of todoList; let key=index" [hidden]="item.status==1">
+      <input type="checkbox" class="checkbox" [(ngModel)]="item.status" (change)="checkBoxChange()"/> {{item.title}}---- <button (click)="deleteList(key)">x</button>
+    </li>
+  </ul>
+  <h3>Finished</h3>
+  <ul>
+    <li *ngFor="let item of todoList; let key=index" [hidden]="item.status==0">
+      <input type="checkbox" class="checkbox" [(ngModel)]="item.status" (change)="checkBoxChange()"/>{{item.title}} ---- <button (click)="deleteList(key)">x</button>
+    </li>
+  </ul>
+</div>

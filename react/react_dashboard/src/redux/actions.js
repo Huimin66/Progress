@@ -1,6 +1,7 @@
-/* 包含n个action creator函数的模块
-同步action:对象{type:xxx,date:数据} 
-异步action:函数 dispatch=>{}*/
+/*  contains several actions
+    sync action:{type:xxx,date:data} 
+    async action: dispatch=>{}
+*/
 import {
   SET_HEAD_TITLE,
   RECEIVE_USER,
@@ -9,26 +10,23 @@ import {
 } from "./action-type";
 import { reqLogin } from "../api";
 import storageUtils from "../utils/storageUtils";
-/* 设置头部标题的同步action */
+
+/* set head title action */
 export const setHeadTitle = (headTitle) => ({
   type: SET_HEAD_TITLE,
   data: headTitle,
 });
 
 export const receiveUser = (user) => ({ type: RECEIVE_USER, user });
-
 export const showErrorMsg = (errorMsg) => ({ type: SHOW_ERROR_MSG, errorMsg });
 
+/* logout action */
 export const logout = () => {
   storageUtils.deleteUser();
   return { type: RESET_USER };
 };
 
-/* 退出登陆的同步action */
-
-/*  
-登陆的异步 action
-*/
+/*  login action */
 export const login = (username, password) => async (dispatch) => {
 
   const result = await reqLogin(username, password);

@@ -1,63 +1,41 @@
 import React from 'react';
-import { Card , Button, Table, message} from 'antd';
+import { Card , Button, Table} from 'antd';
 import LinkButton from '../../components/link-button'
 import { useState } from 'react';
-import {reqCategories} from '../../api/index'
+import {reqCategories, reqUpdateCategory} from '../../api/index'
+import {ArrowRightOutlined} from "@ant-design/icons";
+import { Modal } from 'antd';
+import AddForm from './addForm';
+import UpdateForm from './updateForm'
 
 function Category(){
-    const title = 'Main Category'
+
+    const showAdd = ()=>{
+        setIsModalVisible(1);
+    }
     const extra = (
-        <Button type='primary'>
-            <a href="#">More</a>
-        </Button>
+        //add category button
+        <Button type='primary' onClick={showAdd}>More</Button>
     )
 
-    const [category] = useState('')
+    const [category,setCategory] = useState('')
+    const [curCategory, setCurCategory] = useState('')
+    const [subcategory,setSubCategory] = useState('')
     const [column, setColumn] = useState([])
-    const[loading, setLoading] = useState(false) 
-    const[parentId] = useState('0')
-    const[parentName] = useState('')
+    const [loading, setLoading] = useState(false) 
+    const [parentId, setParentId] = useState('0')
+    const [parentName, setParentName] = useState('') 
+    const [isModalVisible, setIsModalVisible] = useState(0) //0 do not show both, 1 show add, 2 show modify
 
-    const dataSource = [
-        {
-            "_id": "5e12b8bce31bb727e4b0e348",
-            "parentId": "0",
-            "name": "Domestic Appliances",
-            "__v": 0
-        },
-        {
-            "_id":  "5e130e60e31bb727e4b0e34b",
-            "parentId": "0",
-            "name": "Smart Phone",
-            "__v": 0
-        },
-        {
-            "_id": "5e1346533ed02518b4db0cd7",
-            "parentId": "0",
-            "name": "Books",
-            "__v": 0
-        },
-        {
-            "_id": "5e144dc7297c1138787e96ab",
-            "parentId": "0",
-            "name": "Apparels",
-            "__v": 0
-        },
-        {
-            "_id": "5e144de1297c1138787e96ac",
-            "parentId": "0",
-            "name": "Toys",
-            "__v": 0
-        }
-    ];
-
+    // we want to get the subcategories after we get parentId and parentName
+    // getting parentId and parentName are asynchronous operations
     React.useEffect(()=>{
-        initColumns()
-        console.log(column)
-    },[])
+        setColumn(initColumns())
+        getCategories()
+    },[parentId,parentName])
       
     const initColumns = ()=>{
-        setColumn(
+        return (
            [ {
                 title: 'Category Name',
                 dataIndex: 'name',
@@ -65,39 +43,96 @@ function Category(){
             {
                 title: 'Action',
                 width:'40%',
-                render:()=>(
+                render:(category)=>(
                 <>
                     
-                    <LinkButton>Change Category</LinkButton>&nbsp;&nbsp;&nbsp;
-                    <LinkButton>Find Subcategories</LinkButton>
+                    <LinkButton onClick={()=>showUpdate(category)}>Change Category</LinkButton>&nbsp;&nbsp;&nbsp;
+                    {parentId==='0'?(<LinkButton onClick={()=>{showSubCategory(category)}}>Find Subcategories</LinkButton>):null
+                    }
                 </>
                 )
             }]
         ) 
     } 
 
-    //get first class category
+    const showSubCategory = (category)=>{
+        setParentId(category._id)
+        setParentName(category.name)
+    }
+
+    //get category
     const getCategories = async()=>{
-        setLoading(true)
-        const result = await reqCategories('0')
-        setLoading(false)
+        setLoading(true)//wenn loading,showing this to get a better user experience
+        const result = await reqCategories(parentId)
+        setLoading(false)//hide loading,after getting data
         if(result.status ===0){
-            const categories =  result.data
+            if(parentId === '0'){
+                setCategory(result.data)
+            }else{
+                setSubCategory(result.data)
+            }
         }else{
-            console.log("get first class category failed")
+            console.log("get main category failed")  
         }
     }
+
+    const goBackToMain = ()=>{
+        setParentId('0')
+        setParentName('')
+        setSubCategory([])
+    }
+
+    const getTitle = ()=>{
+        return (
+            parentId==='0'
+            ?'Main Category'
+            :(<>
+                <LinkButton onClick={goBackToMain}>Main Category</LinkButton>
+                <ArrowRightOutlined/> &nbsp;
+                <span>{parentName}</span>
+            </>)
+        )
+    }
+
+    const handleCancel = () => {
+        setIsModalVisible(0);
+    };
+    const showUpdate = (curCategory)=>{
+        setCurCategory(curCategory)//wenn click on update button, get and save the current category information
+        setIsModalVisible(2);
+    }
+    const updateCategory = async (category) => {
+        setIsModalVisible(0);
+        const result = await reqUpdateCategory(category._id, category.name)
+        if(result.status ===0){
+            getCategories()
+        }
+    };
+    
+    const addCategory = () => {
+        console.log('addCategory')
+    };
+
     return (
-        <Card title={title} extra={extra}>
+        <Card title={getTitle()} extra={extra}>
             <Table 
                 bordered
                 rowKey='_id'
-                // dataSource={category} 
-                dataSource={dataSource} 
+                dataSource={parentId==='0'?category:subcategory} 
                 loading={loading}
                 columns={column} 
-                pagination = {{defaultPageSize:10, showQuickJumper:true}}/>;
+                pagination = {{defaultPageSize:10, showQuickJumper:true}}/>
+
+        <Modal title="Add new Items" visible={isModalVisible===1} onOk={addCategory} onCancel={handleCancel}>
+            <AddForm categoryName = {category.name}/>
+        </Modal>
+
+        <Modal title="Modify Items" visible={isModalVisible===2} onOk={()=>updateCategory(category)} onCancel={handleCancel}>
+            <UpdateForm categoryName={curCategory.name}/>
+        </Modal>
+
         </Card>
+        
     );
 }
 
